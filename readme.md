@@ -64,13 +64,13 @@ stringA = "account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=170
 stringSignTemp = stringA + "&key=api_key" //注：api_key为后台设置的密钥key
 ```
 
-假设密钥是: b9697969749da2ff0b0057f363641eda
+假设密钥是: B9697969749DA2FF0B0057F363641EDA
 ```go
 // GO 
-api_key        := "b9697969749da2ff0b0057f363641eda"
+api_key        := "B9697969749DA2FF0B0057F363641EDA"
 stringA        := "account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1";
 stringSignTemp := stringA + "&key=" + api_key
-// account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1&key=b9697969749da2ff0b0057f363641eda
+// account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1&key=B9697969749DA2FF0B0057F363641EDA
 
  // 计算 MD5 哈希值
 hash := md5.New()
@@ -80,12 +80,12 @@ hashInBytes := hash.Sum(nil) // 这将返回一个长度为 16 的字节数组
 // 将字节数组转换为十六进制字符串
 hashString := strings.ToUpper(hex.EncodeToString(hashInBytes))
 // fmt.Println(hashString)
-// hashString == EE40BB30DC08A6A7B59361DD5959E392
+// hashString == 718566FD5CBA5FC27D2E645ACFE5B010
 ```
 
 ```java
 // JAVA
-String apiKey         = "b9697969749da2ff0b0057f363641eda";
+String apiKey         = "B9697969749DA2FF0B0057F363641EDA";
 String stringA        = "account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1";
 String stringSignTemp = stringA + "&key=" + apiKey;
 
@@ -103,21 +103,21 @@ try {
     String hashString = sb.toString().toUpperCase(); // 转换为大写形式
 
     // Output the hashString
-    // System.out.println(hashString);  // EE40BB30DC08A6A7B59361DD5959E392
+    // System.out.println(hashString);  // 718566FD5CBA5FC27D2E645ACFE5B010
 } catch (NoSuchAlgorithmException e) {
     e.printStackTrace();
 }
 ```        
 ```php
 <?php
-$apiKey = "b9697969749da2ff0b0057f363641eda";
+$apiKey = "B9697969749DA2FF0B0057F363641EDA";
 $stringA = "account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1";
 $stringSignTemp = $stringA . "&key=" . $apiKey;
 
 // 计算 MD5 哈希值并转换为大写形式
 $hashString = strtoupper(md5($stringSignTemp));
 
-echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
+echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ?>
 ```
 
@@ -133,20 +133,21 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ### 错误码实际内容
 | Error Code | Error Message                | 错误码 | 错误信息                   |
-|------------|------------------------------|--------|----------------------------|
-| 200        | Success                      | 200    | 成功                       |
-| 400        | Failure                      | 400    | 失败                       |
-| 401        | Parameter Type Error         | 401    | 参数类型错误               |
-| 402        | Parameter Value Error        | 402    | 参数值错误                 |
-| 403        | Agent Not Found              | 403    | 代理不存在                 |
-| 404        | Agent Disabled               | 404    | 代理已禁用                 |
-| 405        | Signature Error              | 405    | 签名错误                   |
-| 406        | Account Not Found            | 406    | 账号不存在                 |
-| 407        | Game Not Enabled             | 407    | 游戏未启用                 |
-| 408        | Token Not Found or Expired   | 408    | Token不存在或已过期        |
-| 409        | Player Disabled              | 409    | 玩家已禁用                 |
-| 410        | No Available Game Domain     | 410    | 无可用游戏域名             |
-| 500        | Internal Error               | 500    | 内部错误                   |
+|:----------:|------------------------------|:-----:|----------------------------|
+| 0          | Success                      | 0    | 成功                       |
+| 1          | Parameter Type Error         | 1    | 参数类型错误               |
+| 2          | Parameter Value Error        | 2    | 参数值错误                 |
+| 3          | Agent Not Found              | 3    | 代理不存在                 |
+| 4          | Agent Disabled               | 4    | 代理已禁用                 |
+| 5          | Signature Error              | 5    | 签名错误                   |
+| 6          | Account Not Found            | 6    | 账号不存在                 |
+| 7          | Game Not Enabled             | 7    | 游戏未启用                 |
+| 8          | Token Not Found or Expired   | 8    | Token不存在或已过期        |
+| 9          | Player Disabled              | 9    | 玩家已禁用                 |
+| 10         | No Available Game Domain     | 10   | 无可用游戏域名             |
+| 11         | Trans In Out Can't be Zero   | 11   | 转账金额不可以是0          |
+| 12         | Timestamp is Expire          | 12   | 毫秒时间戳超时             |
+| 99         | Internal Error               | 99   | 内部错误                   |
 
 
 
@@ -158,19 +159,19 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 ### 请求参数
 | 参数名    | 类型   | 是否必须 | 描述                                 | 示例值         |
 |-----------|--------|:--------:|--------------------------------------|---------------|
-| account   | string |    是    | 玩家账号                             | p47heuf32rhwi |
+| account   | string |    是    | 玩家账号                             | p47_tx1002212 |
 | agent_id  | int    |    是    | 运营商ID                             | 1             |
 | ip        | string |    否    | 玩家IP                               | 127.0.0.1     |
-| nickname  | string |    否    | 玩家昵称                             | Nickname11    |
+| nickname  | string |    否    | 玩家昵称                             | 恭喜发财007    |
 | timestamp | int64  |    是    | 发送请求的毫秒时间戳                   | 1706941836000 |
-| type      | int    |    是    | 玩家类型 1-正常 2-红利 3-试玩        | 1             |
+| type      | int    |    是    | 玩家类型 1-正常                      | 1             |
 | sign      | string |    是    | 签名，详见签名规则                   |               |
 ``` json
 {
-    "account"  : "p47heuf32rhwi",
+    "account"  : "p47_tx1002212",
     "agent_id" : 1,
     "ip"       : "127.0.0.1",
-    "nickname" : "Nickname11",
+    "nickname" : "恭喜发财007",
     "timestamp": 1706941836000,
     "type"     : 1,
     "sign"     : ""
@@ -188,7 +189,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code": 200,
+    "error_code": 0,
     "error_msg" : "ok",
     "data"      : {
         "token": "ddec96d2165e4f3e8a642057db116983"
@@ -200,8 +201,8 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code": 401,
-    "error_msg" : "参数类型错误",
+    "error_code": 1,
+    "error_msg" : "参数类型错误, agent_id的类型是int不是string",
     "data"      : {}
 }
 ```
@@ -213,12 +214,12 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 - 请求地址: /api/trans/inout
 ### 请求参数
 | 参数名    | 类型    | 是否必须 | 描述                    | 示例值              |
-|------------|---------|:--------:|-----------------------|---------------------|
+|------------|---------|: --------:|-----------------------|---------------------|
 | account    | string  |    是    | 玩家账号                | p47heuf32rhwi      |
 | agent_id   | int64   |    是    | 运营商ID               | 1                   |
 | amount     | string  |    是    | 转入转出金额            | 127.22              |
 | remark     | string  |    否    | 备注                    | 备注                    |
-| t_order    | string  |    是    | 三方订单号              | O2024012268732      |
+| out_order  | string  |    是    | 三方订单号              | O2024012268732      |
 | timestamp  | int64   |    是    | 发送请求的毫秒时间戳          | 1706941836000          |
 | type       | int     |    是    | 类型(必填) 1-转出 2-转入 | 1                   |
 | sign       | string  |    是    | 签名，详见签名规则        |                     |
@@ -229,7 +230,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
     "agent_id" : 1,
     "amount"   : "127.22",
     "remark"   : "备注",
-    "t_order"  : "O2024012268732",
+    "out_order": "O2024012268732",
     "timestamp": 1706941836000,
     "type"     : 1,
     "sign"     : ""
@@ -242,15 +243,15 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 | 参数名            | 类型       | 描述                  |
 |----------------|----------|---------------------|
 | agent_id       | int64    | 运营商ID               |
-| order_number   | string   | 订单号                 |
-| t_order_number | string   | 三方订单号               |
+| order          | string   | 订单号                 |
+| out_order      | string   | 三方订单号               |
 | create_time    | int64    | 创建时间                |
 | account        | string   | 玩家账号                |
-| type           | int      | 玩家类型 1-正常 2-红利 3-试玩        | 
+| type           | int      | 玩家类型 1-正常       |
 | amount         | string   | 转账金额                |
 | before_amount  | string   | 转账前金额               |
 | after_amount   | string   | 转账后金额               |
-| type           | int      | 类型(必填) 1-转出 2-转入  |
+| type           | int      | 类型 1-转出 2-转入  |
 | currency_id    | int      | 币种                  |
 | remark         | string   | 备注                  |
 
@@ -259,21 +260,21 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code": 200,
+    "error_code": 0,
     "error_msg": "ok",
     "data": {
-        "agent_id"      : 1,
-        "order_number"  : "17178332560293803578",
-        "t_order_number": "O2024012268732",
-        "create_time"   : 1717830218000,
-        "account"       : "official_144335",
-        "account_type"  : 1,
-        "amount"        : "100.00",
-        "before_amount" : "0.00",
-        "after_amount"  : "100.00",
-        "type"          : 2,
-        "currency_id"   : 1,
-        "remark"        : "备注"
+        "agent_id"        : 1,
+        "order_number"    : "17178332560293803578",
+        "out_order_number": "O2024012268732",
+        "create_time"     : 1717830218000,
+        "account"         : "official_144335",
+        "account_type"    : 1,
+        "amount"          : "100.00",
+        "before_amount"   : "0.00",
+        "after_amount"    : "100.00",
+        "type"            : 2,
+        "currency_id"     : 1,
+        "remark"          : "备注"
     }
 }
 ```
@@ -282,7 +283,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code": 401,
+    "error_code": 1,
     "error_msg" : "参数类型错误",
     "data"      : {}
 }
@@ -297,11 +298,20 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 | 参数名       | 类型     | 是否必须 | 描述           | 示例值         |
 |-------------|----------|:----:|--------------|-------------|
 | agent_id    | int64    |  是   | 运营商ID        | 1           |
-| page        | int64    |  是   | 页数           | 1           |
+| page        | int64    |  是   | 页数            | 1           |
 | page_size   | int64    |  是   | 每页条数         | 10          |
 | timestamp   | int64    |  是   | 发送请求的毫秒时间戳     | 1706941836000  |
 | sign        | string   |  是   | 签名，详见签名规则    |             |
 
+```json
+{
+    "agent_id" : 1,
+    "page"     : 1,
+    "page_size": 10,
+    "timestamp": 1706941836000,
+    "sign"     : ""
+}
+```
 
 ### 响应参数
 | 参数名        | 类型        | 描述                                      |
@@ -311,12 +321,13 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 | total        | int64       | 总条数                                     |
 | total_page   | int64       | 总页数                                     |
 | list         | array       | 列表数组                                    |
+
+#### 数组内容
+| 参数名        | 类型        | 描述                                      |
+|--------------|-------------|-----------------------------------------|
 | game_id      | string      | 游戏ID                                    |
 | game_name    | string      | 游戏名称                                    |
-| sub_title    | string      | 游戏副标题                                   |
-| cover        | string      | 游戏封面                                    |
-| icon         | string      | 游戏图标                                    |
-| status       | int         | 状态 1:正常 2:维护                            |
+| status       | int         | 状态 1-正常 2-禁用 3-维护 4-隐藏                 |
 | tag          | int         | 游戏标签 0-全部 1-新品 2-推荐 3-经典 4-人气 5-活跃 6-最近 |
 | category     | int         | 游戏分类 1-热门游戏 2-新品游戏                      |
 | game_type    | int         | 游戏类型 1:电游类                              |
@@ -328,26 +339,23 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code":200,
-    "error_msg":"ok",
-    "data":{
-        "page"      : "1",
-        "page_size" : "10",
-        "total"     : "37",
-        "total_page": "4",
+    "error_code": 0,
+    "error_msg" : "ok",
+    "data"      : {
+        "page"      : 1,
+        "page_size" : 10,
+        "total"     : 37,
+        "total_page": 4,
         "list"      : [
           {
-            "game_id"  : 1,
-            "game_name": "大富豪",
-            "sub_title": "BIG",
-            "cover"    : "aaa.jpg",
-            "icon"     : "bbb.jpg",
+            "game_id"  : "2",
+            "game_name": "麻将胡了",
             "status"   : 1,
-            "tag"      : 1,
+            "tag"      : 2,
             "category" : 1,
             "game_type": 1,
-            "volatile" : 1,
-            "theme"    : 1
+            "volatile" : 3,
+            "theme"    : 6
           }
         ]
     }
@@ -358,9 +366,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code":401,
-    "error_msg":"参数类型错误",
-    "data":{}
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
 }
 ```
 
@@ -374,9 +382,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 |-------------|---------|:----:|-------------------|------------------|
 | agent_id    | int64   |  是   | 运营商ID             | 1                |
 | game_id     | int64   |  是   | 游戏ID              | 1                |
-| lang        | string  |  是   | 语系                | en_zh            |
+| lang        | string  |  是   | 语系                | zh-hans           |
 | timestamp   | int64   |  是   | 发送请求的毫秒时间戳          | 1706941836000       |
-| token       | string  |  是   | 玩家token(玩家注入接口获取) | p47heuf32rhwiq   |
+| token       | string  |  是   | 玩家token(玩家注入接口获取) | ddec96d2165e4f3e8a642057db116983   |
 | sign        | string  |  是   | 签名，详见签名规则         |                  |
 
 ### 响应参数
@@ -389,10 +397,10 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code":200,
-    "error_msg":"ok",
-    "data":{
-        "play_url":"www.game.com/game.html"
+    "error_code": 0,
+    "error_msg" : "ok",
+    "data"      : {
+        "play_url": "www.game.com/game.html"
     }
 }
 ```
@@ -401,9 +409,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code":401,
-    "error_msg":"参数类型错误",
-    "data":{}
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
 }
 ```
 
@@ -414,7 +422,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 - 请求地址: /api/transfer/order
 ### 请求参数
 | 参数名        | 类型     | 是否必须 | 描述                     | 示例值         |
-|-------------|--------|:----:|------------------------|-------------|
+|-------------|:------:|:----:|------------------------|-------------|
 | account     | string |  是   | 玩家账号                   | 1           |
 | agent_id    | int64  |  是   | 运营商ID                  | 1           |
 | end_time    | int64  |  是   | 结束毫秒时间戳                  | 1           |
@@ -427,14 +435,18 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ### 响应参数
 | 参数名            | 类型     | 描述             |
-|----------------|--------|----------------|
+|----------------|:------:|----------------|
 | page           | int64  | 页数             |    
 | page_size      | int64  | 每页条数           |
 | total          | int64  | 总条数            |
 | total_page     | int64  | 总页数            |
 | list           | array  | 列表数组           |
-| order_number   | string | 订单号            |
-| t_order_number | string | 三方订单号          |
+
+#### 数据内容
+| 参数名         | 类型 | 描述 | 
+| -------------| :--------:| -------------- |
+| order         | string | 订单号            |
+| out_order      | string | 三方订单号          |
 | create_time    | int    | 创建时间           |
 | account        | string | 玩家账号           |
 | account_type   | string | 账号类型0-正常 1-试玩  |
@@ -450,26 +462,26 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code":200,
-    "error_msg":"ok",
-    "data":{
-        "page":"1",
-        "page_size":"10",
-        "total":"37",
-        "total_page":"4",
-        "list":[
+    "error_code": 0,
+    "error_msg" : "ok",
+    "data"      : {
+        "page"      : "1",
+        "page_size" : "10",
+        "total"     : "37",
+        "total_page": "4",
+        "list"      : [
           {
-            "order_number": "O37432423",
-            "t_order_number": "O37432423",
-            "create_time": 1705903529,
-            "account": "P3sda3qs",
-            "account_type": 1,
-            "amount": "1.00",
-            "before_amount": "0.00",
-            "after_amount": "1.00",
-            "type": 1,
-            "currency_id": 1,
-            "remark": "备注"
+            "order_number"    : "O37432423",
+            "out_order_number": "O37432423",
+            "create_time"     : 170590352900,
+            "account"         : "P3sda3qs",
+            "account_type"    : 1,
+            "amount"          : "1.00",
+            "before_amount"   : "0.00",
+            "after_amount"    : "1.00",
+            "type"            : 1,
+            "currency_id"     : 1,
+            "remark"          : "备注"
           }
         ]
     }
@@ -499,7 +511,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 #### 数据内容
 | 参数名           | 类型    | 描述                             |
-|------------------|---------|----------------------------------|
+|------------------|:-------:|----------------------------------|
 | parent_bet_id    | string  | 父单ID                             |
 | ref_id           | string  | 订单ID                            |
 | round_id         | string  | 回合ID                           |
@@ -516,21 +528,21 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code": 200,
+    "error_code": 0,
     "error_msg": "ok",
     "data": {
         "list": [
             {                
                 "parent_bet_id": "17176457141975900008",
-                "ref_id": "17176457141975900008",
-                "round_id": "O374332423",
-                "game_id": "1",
-                "bet_time": 1706941836000,
-                "bet_amount": "1.00",
+                "ref_id"       : "17176457141975900008",
+                "round_id"     : "O374332423",
+                "game_id"      : "1",
+                "bet_time"     : 1706941836000,
+                "bet_amount"   : "1.00",
                 "payout_amount": "0.00",
-                "overage": "1.00",
-                "status": 1,
-                "currency_id": 1,              
+                "overage"      : "1.00",
+                "status"       : 1,
+                "currency_id"  : 1,
             }
         ]
     }
@@ -541,9 +553,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code":401,
-    "error_msg":"参数类型错误",
-    "data":{}
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
 }
 ```
 
@@ -576,16 +588,16 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code":200,
+    "error_code": 0,
     "error_msg":"ok",
     "data":{
-        "account":"aa3242",
-        "nickname":"dg",
-        "balance":"100.22",
-        "frozen_amount":"16.83",
-        "is_online":1,
-        "account_type":1,
-        "status":1
+        "account"      : "aa3242",
+        "nickname"     : "dg",
+        "balance"      : "100.22",
+        "frozen_amount": "16.83",
+        "is_online"    : 1,
+        "account_type" : 1,
+        "status"       : 1
     }
 }
 ```
@@ -594,9 +606,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code":401,
-    "error_msg":"参数类型错误",
-    "data":{}
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
 }
 ```
 
@@ -607,11 +619,11 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 - 请求地址: /api/transfer/check
 ### 请求参数
 | 参数名     | 类型   | 是否必须 | 描述           | 示例值          |
-|------------|--------|:--------:|----------------|-----------------|
-| agent_id   | int64  |    是    | 运营商ID       | 1               |
-| t_order    | string |    是    | 第三方订单号   | O38674837624    |
-| timestamp  | int64  |    是    | 发送请求的时间戳 | 1626863144      |
-| sign       | string |    是    | 签名，详见签名规则 |                |
+|------------|--------|: --------: |----------------|-----------------|
+| agent_id   | int64  |    是    | 运营商ID           | 1               |
+| out_order  | string |    是    | 第三方订单号       | O38674837624    |
+| timestamp  | int64  |    是    | 发送请求的时间戳    | 1626863144      |
+| sign       | string |    是    | 签名，详见签名规则  |                |
 
 
 ### 响应参数
@@ -619,7 +631,7 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 |------------------|---------|-----------------------|
 | error_code       | int     | 错误码                |
 | error_msg        | string  | 错误信息              |
-| t_order          | string  | 第三方订单号           |
+| out_order        | string  | 第三方订单号           |
 | is_exit          | int     | 是否存在 1：是 0：否    |
 | status           | int     | 订单状态 1：完成 0：未完成 |
 | amount           | string  | 转账金额              |
@@ -631,15 +643,15 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 #### 请求成功
 ```json
 {
-    "error_code":200,
-    "error_msg":"ok",
-    "data":{
-        "t_order":"O348274783264",
-        "is_exit":1,
-        "status":1,
-        "amount":"16.83",
-        "before_amount":"100.22",
-        "after_amount":"100.22"
+    "error_code": 0,
+    "error_msg" : "ok",
+    "data"      : {
+        "out_order"    : "O348274783264",
+        "is_exit"      : 1,
+        "status"       : 1,
+        "amount"       : "16.83",
+        "before_amount": "100.22",
+        "after_amount" : "100.22"
     }
 }
 ```
@@ -648,9 +660,9 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 
 ```json
 {
-    "error_code":401,
-    "error_msg":"参数类型错误",
-    "data":{}
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
 }
 ```
 
@@ -675,3 +687,4 @@ echo $hashString; // 输出: EE40BB30DC08A6A7B59361DD5959E392
 | 16     | 众神宙斯          | Zeus Power Link         | 北欧神话 | Feature Multiplier symbols and Free Spins feature |
 | 17     | 热血欧洲杯        | Passionate European Cup | 足球     | Feature a multipying Wild symbol and Free Spin collection prize pool mode |
 | 18     | 狂欢音乐节        | Music Festival          | 音乐     | Feature increasing Multipliers and Bonus Game |
+| 19     | 财神赐福        | CaiShen Fortune         | 财神     |  |
