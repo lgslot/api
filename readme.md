@@ -213,16 +213,17 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 - 请求方式: POST
 - 请求地址: /api/trans/inout
 ### 请求参数
-| 参数名    | 类型    | 是否必须 | 描述                    | 示例值              |
-|------------|---------|: --------:|-----------------------|---------------------|
-| account    | string  |    是    | 玩家账号                | p47heuf32rhwi      |
-| agent_id   | int64   |    是    | 运营商ID               | 1                   |
-| amount     | string  |    是    | 转入转出金额            | 127.22              |
-| remark     | string  |    否    | 备注                    | 备注                    |
-| out_order  | string  |    是    | 三方订单号              | O2024012268732      |
-| timestamp  | int64   |    是    | 发送请求的毫秒时间戳          | 1706941836000          |
-| type       | int     |    是    | 类型(必填) 1-转出 2-转入 | 1                   |
-| sign       | string  |    是    | 签名，详见签名规则        |                     |
+| 参数名    | 类型   | 是否必须 | 描述                     | 示例值             |
+|-----------|--------|:--------:|--------------------------|--------------------|
+| account   | string |    是    | 玩家账号                 | p47heuf32rhwi      |
+| agent_id  | int64  |    是    | 运营商ID                 | 1                  |
+| amount    | string |    是    | 转入转出金额             | 127.22             |
+| remark    | string |    否    | 备注                     | 备注               |
+| out_order | string |    是    | 三方订单号               | O2024012268732     |
+| timestamp | int64  |    是    | 发送请求的毫秒时间戳      | 1706941836000      |
+| type      | int    |    是    | 类型(必填) 1-转出 2-转入  | 1                  |
+| sign      | string |    是    | 签名，详见签名规则       |                    |
+
 
 ```json
 {
@@ -240,20 +241,21 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 
 ### 响应参数
-| 参数名            | 类型       | 描述                  |
-|----------------|----------|---------------------|
-| agent_id       | int64    | 运营商ID               |
-| order          | string   | 订单号                 |
-| out_order      | string   | 三方订单号               |
-| create_time    | int64    | 创建时间                |
-| account        | string   | 玩家账号                |
-| type           | int      | 玩家类型 1-正常       |
-| amount         | string   | 转账金额                |
-| before_amount  | string   | 转账前金额               |
-| after_amount   | string   | 转账后金额               |
-| type           | int      | 类型 1-转出 2-转入  |
-| currency_id    | int      | 币种                  |
-| remark         | string   | 备注                  |
+| 参数名           | 类型     | 描述                |
+|------------------|----------|---------------------|
+| agent_id         | int64    | 运营商ID             |
+| order            | string   | 订单号               |
+| out_order        | string   | 三方订单号            |
+| create_time      | int64    | 创建时间             |
+| account          | string   | 玩家账号             |
+| type             | int      | 玩家类型 1-正常       |
+| amount           | string   | 转账金额             |
+| before_amount    | string   | 转账前金额            |
+| after_amount     | string   | 转账后金额            |
+| type             | int      | 类型 1-转出 2-转入   |
+| currency_id      | int      | 币种                |
+| remark           | string   | 备注                |
+
 
 
 ### 响应实例
@@ -378,14 +380,15 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 - 请求方式: POST
 - 请求地址: /api/enter/game
 ### 请求参数
-| 参数名       | 类型      | 是否必须 | 描述                | 示例值            |
-|-------------|---------|:----:|-------------------|------------------|
-| agent_id    | int64   |  是   | 运营商ID             | 1                |
-| game_id     | int64   |  是   | 游戏ID              | 1                |
-| lang        | string  |  是   | 语系                | zh-hans           |
-| timestamp   | int64   |  是   | 发送请求的毫秒时间戳          | 1706941836000       |
-| token       | string  |  是   | 玩家token(玩家注入接口获取) | ddec96d2165e4f3e8a642057db116983   |
-| sign        | string  |  是   | 签名，详见签名规则         |                  |
+| 参数名       | 类型      | 是否必须 | 描述                | 示例值                            |
+|-------------|-----------|:--------:|---------------------|----------------------------------|
+| agent_id    | int64     |    是    | 运营商ID             | 1                                |
+| game_id     | int64     |    是    | 游戏ID               | 1                                |
+| lang        | string    |    是    | 语系                 | zh-hans                          |
+| timestamp   | int64     |    是    | 发送请求的毫秒时间戳 | 1706941836000                    |
+| token       | string    |    是    | 玩家token (玩家注入接口获取) | ddec96d2165e4f3e8a642057db116983 |
+| sign        | string    |    是    | 签名，详见签名规则   |                                  |
+
 
 ### 响应参数
 | 参数名      | 类型     | 描述    |
@@ -421,17 +424,18 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 - 请求方式: POST
 - 请求地址: /api/transfer/order
 ### 请求参数
-| 参数名        | 类型     | 是否必须 | 描述                     | 示例值         |
-|-------------|:------:|:----:|------------------------|-------------|
-| account     | string |  是   | 玩家账号                   | 1           |
-| agent_id    | int64  |  是   | 运营商ID                  | 1           |
-| end_time    | int64  |  是   | 结束毫秒时间戳                  | 1           |
-| page        | int64  |  是   | 页数                     | 1           |
-| page_size   | int64  |  是   | 每页条数                   | 10          |
-| start_time  | int64  |  是   | 开始毫秒时间戳                  | 1           |
-| timestamp   | int64  |  是   | 发送请求的毫秒时间戳               | 1706941836000  |
-| type        | int64  |  是   | 玩家类型 0-正常玩家 1-试玩玩家(必填) | 1           |
-| sign        | string |  是   | 签名，详见签名规则              |             |
+| 参数名       |  类型  | 是否必须 | 描述                     | 示例值            |
+|--------------|:------:|:--------:|--------------------------|-------------------|
+| account      | string |    是    | 玩家账号                 | 1                 |
+| agent_id     | int64  |    是    | 运营商ID                 | 1                 |
+| end_time     | int64  |    是    | 结束毫秒时间戳           | 1                 |
+| page         | int64  |    是    | 页数                     | 1                 |
+| page_size    | int64  |    是    | 每页条数                 | 10                |
+| start_time   | int64  |    是    | 开始毫秒时间戳           | 1                 |
+| timestamp    | int64  |    是    | 发送请求的毫秒时间戳     | 1706941836000     |
+| type         | int64  |    是    | 玩家类型 0-正常玩家 1-试玩玩家 | 1                 |
+| sign         | string |    是    | 签名，详见签名规则       |                   |
+
 
 ### 响应参数
 | 参数名            | 类型     | 描述             |
@@ -618,12 +622,13 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 - 请求方式: POST
 - 请求地址: /api/transfer/check
 ### 请求参数
-| 参数名     | 类型   | 是否必须 | 描述           | 示例值          |
-|------------|--------|: --------: |----------------|-----------------|
-| agent_id   | int64  |    是    | 运营商ID           | 1               |
-| out_order  | string |    是    | 第三方订单号       | O38674837624    |
-| timestamp  | int64  |    是    | 发送请求的时间戳    | 1626863144      |
-| sign       | string |    是    | 签名，详见签名规则  |                |
+| 参数名     | 类型   | 是否必须 | 描述               | 示例值        |
+|------------|--------|:--------:|--------------------|---------------|
+| agent_id   | int64  |    是    | 运营商ID           | 1             |
+| out_order  | string |    是    | 第三方订单号       | O38674837624  |
+| timestamp  | int64  |    是    | 发送请求的时间戳   | 1626863144    |
+| sign       | string |    是    | 签名，详见签名规则 |               |
+
 
 
 ### 响应参数
