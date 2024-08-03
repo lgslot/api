@@ -265,18 +265,18 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "error_code": 0,
     "error_msg": "ok",
     "data": {
-        "agent_id"        : 1,
-        "order_number"    : "17178332560293803578",
-        "out_order_number": "O2024012268732",
-        "create_time"     : 1717830218000,
-        "account"         : "official_144335",
-        "account_type"    : 1,
-        "amount"          : "100.00",
-        "before_amount"   : "0.00",
-        "after_amount"    : "100.00",
-        "type"            : 2,
-        "currency_id"     : 1,
-        "remark"          : "备注"
+        "agent_id"     : 1,
+        "order"        : "17178332560293803578",
+        "out_order"    : "O2024012268732",
+        "create_time"  : 1717830218000,
+        "account"      : "official_144335",
+        "account_type" : 1,
+        "amount"       : "100.00",
+        "before_amount": "0.00",
+        "after_amount" : "100.00",
+        "type"         : 2,
+        "currency_id"  : 1,
+        "remark"       : "备注"
     }
 }
 ```
@@ -475,17 +475,17 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
         "total_page": "4",
         "list"      : [
           {
-            "order_number"    : "O37432423",
-            "out_order_number": "O37432423",
-            "create_time"     : 170590352900,
-            "account"         : "P3sda3qs",
-            "account_type"    : 1,
-            "amount"          : "1.00",
-            "before_amount"   : "0.00",
-            "after_amount"    : "1.00",
-            "type"            : 1,
-            "currency_id"     : 1,
-            "remark"          : "备注"
+            "order"        : "20240102184048",
+            "out_order"    : "O37432423",
+            "create_time"  : 170590352900,
+            "account"      : "P3sda3qs",
+            "account_type" : 1,
+            "amount"       : "1.00",
+            "before_amount": "0.00",
+            "after_amount" : "1.00",
+            "type"         : 1,
+            "currency_id"  : 1,
+            "remark"       : "备注"
           }
         ]
     }
