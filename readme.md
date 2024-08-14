@@ -147,6 +147,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 10         | No Available Game Domain     | 10   | 无可用游戏域名             |
 | 11         | Trans In Out Can't be Zero   | 11   | 转账金额不可以是0          |
 | 12         | Timestamp is Expire          | 12   | 毫秒时间戳超时             |
+| 13         | No Exist Order               | 13   | 订单不存在                |
 | 99         | Internal Error               | 99   | 内部错误                   |
 
 
