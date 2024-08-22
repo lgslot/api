@@ -720,7 +720,6 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | error_code       | int     | 错误码                |
 | error_msg        | string  | 错误信息              |
 | out_order        | string  | 第三方订单号           |
-| is_exit          | int     | 是否存在 1：是 0：否    |
 | status           | int     | 订单状态 1：完成 0：未完成 |
 | amount           | string  | 转账金额              |
 | before_amount    | string  | 转账前金额             |
@@ -735,7 +734,6 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "error_msg" : "ok",
     "data"      : {
         "out_order"    : "O348274783264",
-        "is_exit"      : 1,
         "status"       : 1,
         "amount"       : "16.83",
         "before_amount": "100.22",
@@ -748,8 +746,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 ```json
 {
-    "error_code": 1,
-    "error_msg" : "参数类型错误",
+    "error_code": 13,
+    "error_msg" : "订单不存在",
     "data"      : {}
 }
 ```
