@@ -715,15 +715,15 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 
 ### 响应参数
-| 参数名           | 类型    | 描述                  |
+| 参数名           | 类型    | 描述                    |
 |------------------|---------|-----------------------|
-| error_code       | int     | 错误码                |
-| error_msg        | string  | 错误信息              |
-| out_order        | string  | 第三方订单号           |
-| status           | int     | 订单状态 1：完成 0：未完成 |
-| amount           | string  | 转账金额              |
-| before_amount    | string  | 转账前金额             |
-| after_amount     | string  | 转账后金额             |
+| error_code       | int     | 错误码                  |
+| error_msg        | string  | 错误信息                |
+| out_order        | string  | 第三方订单号             |
+| status           | int     | 订单状态 1：完成 2：未完成 |
+| amount           | string  | 转账金额                   |
+| before_amount    | string  | 转账前金额                 |
+| after_amount     | string  | 转账后金额                 |
 
 
 ### 响应实例
@@ -751,6 +751,60 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "data"      : {}
 }
 ```
+
+
+## 玩家登出
+### 接口概述
+- 功能: 玩家登出或者踢号
+- 请求方式: POST
+- 请求地址: /api/player/logout
+### 请求参数
+| 参数名    | 类型   | 是否必须 | 描述                                 | 示例值         |
+|-----------|--------|:--------:|--------------------------------------|---------------|
+| account   | string |    是    | 玩家账号,未注册会直接注册              | p47_tx1002212 |
+| agent_id  | int    |    是    | 运营商ID                             | 1             |
+| timestamp | int64  |    是    | 发送请求的毫秒时间戳                   | 1706941836000 |
+| sign      | string |    是    | 签名，详见签名规则                   |               |
+``` json
+{
+    "account"  : "HQ_28_hello8",
+    "agent_id" : 1,    
+    "timestamp": 1706941836000,
+    "type"     : 1,
+    "sign"     : ""
+}
+```
+
+
+
+### 响应参数
+| 参数名               | 类型      | 描述        |
+|-------------------|---------|-----------|
+| token             | string  | 玩家token   |
+
+### 响应实例
+#### 请求成功
+```json
+{
+    "error_code": 0,
+    "error_msg" : "ok",
+    "data"      : {
+        "token": "ddec96d2165e4f3e8a642057db116983"
+    }
+}
+```
+
+#### 请求失败
+
+```json
+{
+    "error_code": 1,
+    "error_msg" : "参数类型错误, agent_id的类型是int不是string",
+    "data"      : {}
+}
+```
+
+
 
 
 # 游戏
