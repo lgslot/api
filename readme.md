@@ -782,7 +782,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ### 响应参数
 | 参数名               | 类型      | 描述        |
 |-------------------|---------|-----------|
-| token             | string  | 玩家token   |
+
 
 ### 响应实例
 #### 请求成功
@@ -790,8 +790,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 {
     "error_code": 0,
     "error_msg" : "ok",
-    "data"      : {
-        "token": "ddec96d2165e4f3e8a642057db116983"
+    "data"      : { 
     }
 }
 ```
@@ -817,17 +816,16 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ### 请求参数
 | 参数名    | 类型   | 是否必须 | 描述                                 | 示例值         |
 |-----------|--------|:--------:|--------------------------------------|---------------|
-| account   | string |    是    | 玩家账号,未注册会直接注册              | p47_tx1002212 |
+| parent_bet_id   | string |    是    | 注单的父单ID              | 17176457141975900008 |
 | agent_id  | int    |    是    | 运营商ID                             | 1             |
 | timestamp | int64  |    是    | 发送请求的毫秒时间戳                   | 1706941836000 |
 | sign      | string |    是    | 签名，详见签名规则                   |               |
 ``` json
 {
-    "account"  : "HQ_28_hello8",
-    "agent_id" : 1,    
-    "timestamp": 1706941836000,
-    "type"     : 1,
-    "sign"     : ""
+    "parent_bet_id": "17176457141975900008",
+    "agent_id"     : 1,
+    "timestamp"    : 1706941836000,
+    "sign"         : ""
 }
 ```
 
