@@ -538,7 +538,32 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | status           | int    | 交易状态 1-未完成 2-已完成        |
 | currency_id      | int    | 币种ID 具体可以参看币种表         |
 
+假设玩家下注1.00元, 未中奖
+```json
+{
+    "bet_amount"   : "1.00",
+    "payout_amount": "0.00",
+    "overage"      : "-1.00"
+}
+```
 
+假设玩家下注1.00元, 中奖1元, 等于保本
+```json
+{
+    "bet_amount"   : "1.00",
+    "payout_amount": "1.00",
+    "overage"      : "0.00"
+}
+```
+
+假设玩家下注1.00元, 中奖4元, 等于赢了3元
+```json
+{
+    "bet_amount"   : "1.00",
+    "payout_amount": "4.00",
+    "overage"      : "3.00"
+}
+```
 
 ### 响应实例
 #### 请求成功
@@ -560,7 +585,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "end_time"     : 1706941836000,
                 "bet_amount"   : "1.00",
                 "payout_amount": "0.00",
-                "overage"      : "1.00",
+                "overage"      : "-1.00",
                 "status"       : 1,
                 "currency_id"  : 1,
             },
@@ -575,8 +600,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "start_time"   : 1706941838000,
                 "end_time"     : 1706941838000,
                 "bet_amount"   : "1.00",
-                "payout_amount": "0.00",
-                "overage"      : "1.00",
+                "payout_amount": "4.00",
+                "overage"      : "3.00",
                 "status"       : 1,
                 "currency_id"  : 1,
             }
