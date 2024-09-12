@@ -909,6 +909,15 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 18     | 狂欢音乐节        | Music Festival          | 音乐     | Feature increasing Multipliers and Bonus Game |
 | 19     | 财神赐福        | CaiShen Fortune         | 财神     |  |
 
+# 语言
+##
+| 币种名称 | 描述 | 
+|--------------|---------------------|
+|zh-hans  | 简体中文|
+|vi | 越南文|
+|en | 英语 |
+
+
 
 # 币种
 ## 币种和币种ID描述
