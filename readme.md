@@ -20,6 +20,7 @@
         - [玩家登出](#玩家登出)
         - [注单详情页](#注单详情页)
         - [转出](#转出)
+        - [转入](#转入)
 - [游戏](#游戏)
   - [游戏介绍](#游戏介绍)
 - [语言](#语言)
@@ -919,6 +920,96 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 {
     "account"  : "p47heuf32rhwi",
     "agent_id" : 1,
+    "amount"   : "100.00",
+    "remark"   : "备注",
+    "out_order": "LuckyGamingb51a7f36db414ace",
+    "timestamp": 1706941836000,
+    "sign"     : ""
+}
+```
+
+
+
+### 响应参数
+| 参数名           | 类型     | 描述                |
+|------------------|----------|---------------------|
+| agent_id         | int64    | 运营商ID             |
+| order            | string   | 订单号               |
+| out_order        | string   | 三方订单号            |
+| create_time      | int64    | 创建时间             |
+| account          | string   | 玩家账号             |
+| type             | int      | 玩家类型 1-正常       |
+| amount           | string   | 转账金额             |
+| before_amount    | string   | 转账前金额            |
+| after_amount     | string   | 转账后金额            |
+| type             | int      | 类型 1-转出 2-转入   |
+| currency_id      | int      | 币种                |
+| remark           | string   | 备注                |
+
+
+
+### 响应实例
+#### 请求成功
+```json
+{
+    "error_code": 0,
+    "error_msg": "ok",
+    "data": {
+        "agent_id"     : 1,
+        "order"        : "17178332560293803578",
+        "out_order"    : "O2024012268732",
+        "create_time"  : 1717830218000,
+        "account"      : "official_144335",
+        "account_type" : 1,
+        "amount"       : "100.00",
+        "before_amount": "100.00",
+        "after_amount" : "0.00",
+        "type"         : 1,
+        "currency_id"  : 1,
+        "remark"       : "备注"
+    }
+}
+```
+
+#### 请求失败
+
+```json
+{
+    "error_code": 15,
+    "error_msg" : "Not Enough Money",
+    "data"      : {}
+}
+```
+
+
+ 
+## 转入
+### 接口概述
+- 功能: 转入功能(上分)
+- 请求方式: POST
+- 请求地址: /api/trans/in
+
+```
+/api/trans/in 和/api/trans/inout的区别在与:
+少了一个type参数
+```
+
+### 请求参数
+| 参数名    | 类型   | 是否必须 | 描述                     | 示例值             |
+|-----------|--------|:--------:|--------------------------|--------------------|
+| account   | string |    是    | 玩家账号                 | p47heuf32rhwi      |
+| agent_id  | int64  |    是    | 运营商ID                 | 1                  |
+| amount    | string |    是    | 转入转出金额             | 127.22             |
+| remark    | string |    否    | 备注                     | 备注               |
+| out_order | string |    是    | 三方订单号               | O2024012268732     |
+| timestamp | int64  |    是    | 发送请求的毫秒时间戳      | 1706941836000      |
+| sign      | string |    是    | 签名，详见签名规则       |                    |
+
+
+```json
+{
+    "account"  : "p47heuf32rhwi",
+    "agent_id" : 1,
     "amount"   : "127.22",
     "remark"   : "备注",
     "out_order": "LuckyGamingb51a7f36db414ace",
@@ -979,7 +1070,6 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "data"      : {}
 }
 ```
-
 
 # 其他参数
 ## 游戏
