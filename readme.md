@@ -909,7 +909,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 |-----------|--------|:--------:|--------------------------|--------------------|
 | account   | string |    是    | 玩家账号                 | p47heuf32rhwi      |
 | agent_id  | int64  |    是    | 运营商ID                 | 1                  |
-| amount    | string |    是    | 转入转出金额             | 127.22             |
+| amount    | string |    是    | 转入转出金额             | 100.00             |
 | remark    | string |    否    | 备注                     | 备注               |
 | out_order | string |    是    | 三方订单号               | O2024012268732     |
 | timestamp | int64  |    是    | 发送请求的毫秒时间戳      | 1706941836000      |
@@ -1051,9 +1051,9 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
         "create_time"  : 1717830218000,
         "account"      : "official_144335",
         "account_type" : 1,
-        "amount"       : "100.00",
-        "before_amount": "0.00",
-        "after_amount" : "100.00",
+        "amount"       : "127.22",
+        "before_amount": "100.00",
+        "after_amount" : "227.22",
         "type"         : 2,
         "currency_id"  : 1,
         "remark"       : "备注"
