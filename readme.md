@@ -8,6 +8,7 @@
     - [通用说明](#通用说明)
         - [签名规则](#签名规则)
     - [接口文档](#接口文档)
+        - [通用错误接口](#通用错误接口)
         - [玩家登录](#玩家登录)
         - [转入转出](#转入转出)
         - [游戏列表](#游戏列表)
@@ -152,6 +153,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 12         | Timestamp is Expire          | 12   | 毫秒时间戳超时             |
 | 13         | No Exist Order               | 13   | 订单不存在                |
 | 14         | Insert Order is Exist        | 14   | 插入的订单已经存在           |
+| 15         | Not Enough Money             | 15   | 金额不足                     |
 | 99         | Internal Error               | 99   | 内部错误                   |
 
 
