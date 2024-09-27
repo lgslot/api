@@ -527,8 +527,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 #### 数据内容
 | 参数名           | 类型   | 描述                             |
 |------------------|:------:|----------------------------------|
-| parent_bet_id    | string | 父单ID                           |
 | ref_id           | string | 订单ID                           |
+| settlement       | int    | 结算状态 1-未结算  2-已结算       |
 | round_id         | string | 回合ID                           |
 | game_id          | string | 游戏ID                           |
 | game_name        | string | 游戏名称                         |
@@ -536,10 +536,11 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | bet_time         | int64  | 下注时间毫秒时间戳               |
 | start_time       | int64  | 开始时间毫秒时间戳, 定时类游戏使用 |
 | end_time         | int64  | 结束时间毫秒时间戳, 定时类游戏使用 |
+| parent_bet_id    | string | 父单ID                           |
+| status           | int    | 父单交易状态 1-未完成 2-已完成     |
 | bet_amount       | string | 下注金额,最多保留2位小数          |
 | payout_amount    | string | 派彩金额,最多保留2位小数          |
 | overage          | string | 输赢金额,最多保留2位小数          |
-| status           | int    | 交易状态 1-未完成 2-已完成        |
 | currency_id      | int    | 币种ID 具体可以参看币种表         |
 
 假设玩家下注1.00元, 未中奖
@@ -590,7 +591,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "bet_amount"   : "1.00",
                 "payout_amount": "0.00",
                 "overage"      : "-1.00",
-                "status"       : 1,
+                "status"       : 2,
+                "settlement"   : 2,
                 "currency_id"  : 1,
             },
             {                
@@ -606,7 +608,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "bet_amount"   : "1.00",
                 "payout_amount": "4.00",
                 "overage"      : "3.00",
-                "status"       : 1,
+                "status"       : 2,
+                "settlement"   : 2,
                 "currency_id"  : 1,
             }
         ]
@@ -1092,7 +1095,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 16     | 众神宙斯          | Zeus Power Link         | 北欧神话 | Feature Multiplier symbols and Free Spins feature |
 | 17     | 热血欧洲杯        | Passionate European Cup | 足球     | Feature a multipying Wild symbol and Free Spin collection prize pool mode |
 | 18     | 狂欢音乐节        | Music Festival          | 音乐     | Feature increasing Multipliers and Bonus Game |
-| 19     | 财神赐福        | CaiShen Fortune         | 财神     |  |
+| 19     | 财神赐福        | CaiShen Fortune         | 财神     | 获胜最高可达 2000X！|
 
 ## 语言
 ### 语言与描述
@@ -1151,4 +1154,3 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 |40|   捷克克朗     | CZK |
 |41|   罗马尼亚列伊     | RON |
 |42|   哥伦比亚比索     | COP |
-|43|   最大值限定     | MAX |
