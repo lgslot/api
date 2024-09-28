@@ -541,6 +541,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | bet_amount       | string | 下注金额,最多保留2位小数          |
 | payout_amount    | string | 派彩金额,最多保留2位小数          |
 | overage          | string | 输赢金额,最多保留2位小数          |
+| bet_type         | int    | 1普通 2免费 3购买免费            |
 | currency_id      | int    | 币种ID 具体可以参看币种表         |
 
 假设玩家下注1.00元, 未中奖
@@ -594,6 +595,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "status"       : 2,
                 "settlement"   : 2,
                 "currency_id"  : 1,
+                "bet_type"     : 1
             },
             {                
                 "parent_bet_id": "17176457141975900008",
@@ -611,6 +613,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
                 "status"       : 2,
                 "settlement"   : 2,
                 "currency_id"  : 1,
+                "bet_type"     : 2
             }
         ]
     }
