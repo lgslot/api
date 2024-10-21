@@ -21,6 +21,7 @@
         - [注单详情页](#注单详情页)
         - [转出](#转出)
         - [转入](#转入)
+        - [每日汇总](#每日汇总)
 - [游戏](#游戏)
   - [游戏介绍](#游戏介绍)
 - [语言](#语言)
@@ -1076,6 +1077,122 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "data"      : {}
 }
 ```
+
+
+
+
+
+
+ 
+## 每日汇总
+### 接口概述
+- 功能: 获取每日汇总(只能获取昨日之前)
+- 请求方式: POST
+- 请求地址: /api/daily/summary
+
+
+### 请求参数
+| 参数名    | 类型   | 是否必须 | 描述                     | 示例值             |
+|-----------|--------|:--------:|--------------------------|--------------------|
+| agent_id  | int64  |    是    | 运营商ID                 | 1                  |
+| compression  | int |    是    | 压缩模式 1直接发送, 2获取zip下载地址             | 1             |
+| date_time | int |    是       | 获取的日期格式yyyymmdd               | 20241020     |
+| timestamp | int64  |    是    | 发送请求的毫秒时间戳      | 1739499299759      |
+| sign      | string |    是    | 签名，详见签名规则       | C90ABCDBCD5DB43D31608075D042FCBF                   |
+
+
+```json
+{
+    "agent_id":1,
+    "compression":1,
+    "date_time": 20241020,
+    "timestamp": 1739499299759,
+    "sign": "C90ABCDBCD5DB43D31608075D042FCBF"
+}
+```
+
+
+
+### 响应参数
+| 参数名           | 类型     | 描述                |
+|------------------|----------|---------------------|
+| file             | string    | zip下载模式的文件地址    |
+| data             | object   | 数据的详细内容            |
+| data.agent_id    | int     | 运营商编号            |
+| data.agent_name  | string      | 运营商账号            |
+| data.player_list  | map       | 玩家角色列表            |
+
+
+#### 玩家角色列表 下级参数
+| 参数名           | 类型     | 描述                |
+|------------------|----------|---------------------|
+| game_list             | map    | 玩家游戏列表    |
+| player_id             | int64   | 玩家id            |
+| player_name           | string   | 玩家账号            |
+#### 玩家游戏列表 下级参数
+| 参数名           | 类型     | 描述                |
+|------------------|----------|---------------------|
+| total_round             | int    | 总局数    |
+| bet_amount             | string    | 有效下注    |
+| payout_amount         | string    | 派彩金额    |
+| overage               | string    | 输赢金额    |
+| game_id             | int64   | 游戏id            |
+| game_name           | string   | 游戏名称            |
+
+### 响应实例
+#### 请求成功
+```json
+{
+	"error_code": 0,
+	"error_msg": "OK",
+	"data": {
+		"file": "",
+		"data": {
+			"agent_id": 1,
+			"agent_name": "official",
+			"player_list": {
+				"115258": {
+					"game_list": {
+						"17": {
+							"bet_amount": "270.00",
+							"game_id": 17,
+							"game_name": "热血欧洲杯",
+							"overage": "-40.00",
+							"payout_amount": "230.00",
+							"total_round": 64
+						}
+					},
+					"player_id": 115258,
+					"player_name": "20241020161721_cleansecret"
+				}
+			}
+		}
+	},
+	"req": {
+		"agent_id": 1,
+		"compression": 1,
+		"date_time": 20241020,
+		"timestamp": 1739499299759,
+		"sign": "C90ABCDBCD5DB43D31608075D042FCBF"
+	}
+}
+```
+
+#### 请求失败
+
+```json
+{
+    "error_code": 1,
+    "error_msg" : "参数类型错误",
+    "data"      : {}
+}
+```
+
+
+
+
+
+
 
 # 其他参数
 ## 游戏
