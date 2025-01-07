@@ -1216,6 +1216,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 17     | 热血欧洲杯        | Passionate European Cup | 足球     | Feature a multipying Wild symbol and Free Spin collection prize pool mode |
 | 18     | 狂欢音乐节        | Music Festival          | 音乐     | Feature increasing Multipliers and Bonus Game |
 | 19     | 财神赐福        | CaiShen Fortune         | 财神     | 获胜最高可达 2000X！|
+| 22     | 麻将胡了2        | Mahjong Ways 2         | 财神     | 24小时麻将馆/10万倍   |
 
 ## 语言
 ### 语言与描述
