@@ -578,46 +578,44 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 {
     "error_code": 0,
     "error_msg": "ok",
-    "data": {
-        "list": [
-            {                
-                "parent_bet_id": "17176457141975900008",
-                "ref_id"       : "17176457141975900008",
-                "round_id"     : "O374332423",
-                "game_id"      : "2",
-                "game_name"    : "麻将胡了",
-                "account"      : "awt176263",
-                "bet_time"     : 1706941836000,
-                "start_time"   : 1706941836000,
-                "end_time"     : 1706941836000,
-                "bet_amount"   : "1.00",
-                "payout_amount": "0.00",
-                "overage"      : "-1.00",
-                "status"       : 2,
-                "settlement"   : 2,
-                "currency_id"  : 1,
-                "bet_type"     : 1
-            },
-            {                
-                "parent_bet_id": "17176457141975900008",
-                "ref_id"       : "17176457141976000009",
-                "round_id"     : "O374332424",
-                "game_id"      : "2",
-                "game_name"    : "麻将胡了",
-                "account"      : "awt176263",
-                "bet_time"     : 1706941838000,
-                "start_time"   : 1706941838000,
-                "end_time"     : 1706941838000,
-                "bet_amount"   : "1.00",
-                "payout_amount": "4.00",
-                "overage"      : "3.00",
-                "status"       : 2,
-                "settlement"   : 2,
-                "currency_id"  : 1,
-                "bet_type"     : 2
-            }
-        ]
-    }
+    "data": [
+        {
+            "parent_bet_id": "17176457141975900008",
+            "ref_id": "17176457141975900008",
+            "round_id": "O374332423",
+            "game_id": "2",
+            "game_name": "麻将胡了",
+            "account": "awt176263",
+            "bet_time": 1706941836000,
+            "start_time": 1706941836000,
+            "end_time": 1706941836000,
+            "bet_amount": "1.00",
+            "payout_amount": "0.00",
+            "overage": "-1.00",
+            "status": 2,
+            "settlement": 2,
+            "currency_id": 1,
+            "bet_type": 1
+        },
+        {
+            "parent_bet_id": "17176457141975900008",
+            "ref_id": "17176457141976000009",
+            "round_id": "O374332424",
+            "game_id": "2",
+            "game_name": "麻将胡了",
+            "account": "awt176263",
+            "bet_time": 1706941838000,
+            "start_time": 1706941838000,
+            "end_time": 1706941838000,
+            "bet_amount": "1.00",
+            "payout_amount": "4.00",
+            "overage": "3.00",
+            "status": 2,
+            "settlement": 2,
+            "currency_id": 1,
+            "bet_type": 2
+        }
+    ]
 }
 
 ```
