@@ -1197,24 +1197,39 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ### 游戏介绍
 | 游戏ID | 游戏名称          | 英文名称                  | 题材     | 简介                          |
 |--------|-----------------|-------------------------|----------|-----------------------------|
-| 2      | 麻将胡了          | Mahjong Ways            | 麻将     | 24小时麻将馆/10万倍             |
-| 4      | 财神来了          | Cai Shen Ways           | 财神     | 中路连消百搭有机会赢更多         |
-| 5      | 赏金猎人          | Bounty Hunter           | 西部     | 高达X40赢奖倍数                |
-| 6      | 招财喵            | Lucky Neko              | 奇幻     | 赢特色招财猫符号，送递增奖金倍数  |
-| 7      | 寻宝黄金城        | Treasures of Aztec      | 探险     | 多路连消百搭                    |
-| 8      | 神鸟报恩          | Divine Bird Returns     | 越南神话 | 杨桃变金币，高达X16200          |
-| 9      | 虎虎生财          | Fortune Tiger           | 奇幻     | 重新旋转和X10奖金倍数！         |
-| 10     | 热带雨林          | Rain Forest             | 动物     | 无线卷轴递增奖金倍数             |
-| 11     | 亡灵大盗          | Wild Bandito            | 奇幻     | 递增式奖金倍数和中轴的金框符号    |
-| 12     | 山精水精          | Mountain Lord VS Sea Lord | 越南神话 | 多种玩法超高倍数，战斗奖金高高高！ |
-| 13     | 淘金者            | Gold Rush               | 探险     | 收集符号触发多种模式，巨龙获得高额奖励！ |
-| 14     | 冰雪大冲关        | The Great Icescape      | 动物     | 破冰行动赢取X50000倍投注奖励     |
-| 15     | 金球射手          | Ultimate Striker        | 足球     | 编入多路连消百搭，增加奖金倍数最高X8000倍 |
-| 16     | 众神宙斯          | Zeus Power Link         | 北欧神话 | Feature Multiplier symbols and Free Spins feature |
-| 17     | 热血欧洲杯        | Passionate European Cup | 足球     | Feature a multipying Wild symbol and Free Spin collection prize pool mode |
-| 18     | 狂欢音乐节        | Music Festival          | 音乐     | Feature increasing Multipliers and Bonus Game |
-| 19     | 财神赐福        | CaiShen Fortune         | 财神     | 获胜最高可达 2000X！|
-| 22     | 麻将胡了2        | Mahjong Ways 2         | 财神     | 24小时麻将馆/10万倍   |
+| 2      | 麻将胡了          | Mahjong Ways            | 麻将               | 24小时麻将馆/10万倍             |
+| 4      | 财神来了          | Cai Shen Ways           | 财神               | 中路连消百搭有机会赢更多         |
+| 5      | 赏金猎人          | Bounty Hunter           | 西部               | 高达X40赢奖倍数                |
+| 6      | 招财喵            | Lucky Neko              | 奇幻               | 赢特色招财猫符号，送递增奖金倍数  |
+| 7      | 寻宝黄金城        | Treasures of Aztec      | 探险               | 多路连消百搭                    |
+| 8      | 神鸟报恩          | Divine Bird Returns     | 越南神话           | 杨桃变金币，高达X16200          |
+| 9      | 虎虎生财          | Fortune Tiger           | 奇幻               | 重新旋转和X10奖金倍数！         |
+| 10     | 热带雨林          | Rain Forest             | 动物               | 无线卷轴递增奖金倍数             |
+| 11     | 亡灵大盗          | Wild Bandito            | 奇幻               | 递增式奖金倍数和中轴的金框符号    |
+| 12     | 山精水精          | Mountain Lord VS Sea Lord | 越南神话         | 多种玩法超高倍数，战斗奖金高高高！ |
+| 13     | 淘金者            | Gold Rush               | 探险               | 收集符号触发多种模式，巨龙获得高额奖励！ |
+| 14     | 冰雪大冲关        | The Great Icescape      | 动物               | 破冰行动赢取X50000倍投注奖励     |
+| 15     | 金球射手          | Ultimate Striker        | 足球               | 编入多路连消百搭，增加奖金倍数最高X8000倍 |
+| 16     | 众神宙斯          | Zeus Power Link         | 北欧神话           | Feature Multiplier symbols and Free Spins feature |
+| 17     | 热血欧洲杯        | Passionate European Cup | 足球               | Feature a multipying Wild symbol and Free Spin collection prize pool mode |
+| 18     | 狂欢音乐节        | Music Festival          | 音乐               | Feature increasing Multipliers and Bonus Game |
+| 19     | 财神赐福          | CaiShen Fortune         | 财神               | 获胜最高可达 2000X！ |
+| 20     | 渔人的财富        | Fisherman's Fortune     | Fishing            | 包含炸弹转换整列百搭符号，收集乘倍鲨鱼符号，免费旋转模式基础倍数翻倍 |
+| 21     | 欢乐斗地主        | CaiShen Fortune         | Chinese Style      | 包含转换符号、重置符号、奖金符号以及奖金乘数递增的免费旋转 |
+| 22     | 麻将胡了2         | Mahjong Ways 2          | 财神               | 24小时麻将馆/10万倍 |
+| 23     | 皇室消消乐        | Royal Match             | Cartoon            | 包含消除类卷轴及特殊符号以实现更多赢奖机会 |
+| 25     | 蛋仔派对          | Eggy Party              | Cartoon            | 包含消除百搭、炸弹、加速器和奖金翻倍的免费旋转 |
+| 26     | 悟空              | Wukong                  | Chinese Myth       | 包含翻倍符号以及可累计增加的免费旋转 |
+| 27     | 哪吒              | Ne Zha                  | Chinese Myth       | 包含角色战斗模式和奖金递增倍数玩法 |
+| 28     | 奥黛之城          | Aodai City              | Vietnam Style      | 包含堆叠百搭符号以及奖金倍数的游戏 |
+| 29     | 熊出没            | Bears Infested          | Cartoon            | 包含特色符号组合、扩展卷轴和递增式奖金倍数的游戏 |
+| 30     | 华尔街之狼        | The Wolf of Wall Street  | Banks             | 包含多路连消百搭并在顶部设有奖金倍数符号的卷轴 |
+| 32     | 疯狂赏金猫        | Crazy Bounty Cat         | Western Cowboy    | 包含消除功能的符号以及递增的奖金乘数 |
+| 33     | 索尼克冲刺        | Sonic Dash               | Science Fiction   | 包含金框符号以及奖金倍数递增的免费旋转 |
+| 34     | 寻龙传说          | ​The Last Dragon          | Disney            | 包含金框符号以及递增式奖金倍数 |
+| 37     | 华尔街之狼2       | The Wolf of Wall Street 2 | Banks            | 包含多路连消百搭并在顶部设有奖金倍数符号的卷轴 |
+| 42     | 天降红包          | Cash Rain                 | Chinese Style    | 包含转换百搭符号以及奖金乘数递增的免费旋转 |
+| 43     | 海洋奇缘          | Moana                     | Disney           | 包含消除功能的符号、递增式奖金倍数、金框符号奖金倍数以及不同的免费旋转选项 |
 
 ## 语言
 ### 语言与描述
@@ -1380,3 +1395,4 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 |147|  赞比亚克瓦查 | ZMW |
 |148|  津巴布韦元 | ZWL |
 |149|  卢旺达法郎 | RWF |
+|150|  泰达币 | USDT|
