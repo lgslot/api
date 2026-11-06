@@ -33,7 +33,7 @@
 
 
 ### 签名规则
-该方式用于直接采用MD5签名的方式
+该方式用于直接采用MD5签名的方式。实际实现按接口使用明确的请求字段参与签名，并追加 `key`；不要把响应字段或 `sign` 本身加入签名。各接口的参与字段以对应请求参数表为准。
 
 #### 签名算法
 
@@ -134,6 +134,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 |--------------|---------|---------|
 | error_code   | int     | 错误码  |
 | error_msg    | string  | 错误信息 |
+| warning_code | int     | 内部排查警告码；正常为 0，接口发生可定位的内部错误时可能返回原实现行号，调用方不得据此判断业务结果 |
 
 
 
@@ -156,7 +157,12 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | 13         | No Exist Order               | 13   | 订单不存在                |
 | 14         | Insert Order is Exist        | 14   | 插入的订单已经存在           |
 | 15         | Not Enough Money             | 15   | 金额不足                     |
+| 16         | Agent Query Error           | 16   | 查询运营商错误               |
 | 99         | Internal Error               | 99   | 内部错误                   |
+
+说明：`error_code` 是对外稳定的业务错误码，`error_msg` 使用上述公共错误信息；底层错误详情不会拼接到 `error_msg` 中。`warning_code` 仅用于服务端排查，不能作为业务判断条件。
+
+玩家查询相关接口中，RPC 查询玩家失败、玩家不存在，以及账号不属于当前运营商，统一返回 `error_code=6`（账号不存在）。查询运营商本身失败返回 `error_code=16`。
 
 
 
@@ -257,7 +263,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| type             | int      | 玩家类型 1-正常       |
+| account_type     | int      | 玩家类型 0-正常 1-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
@@ -464,7 +470,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order      | string | 三方订单号          |
 | create_time    | int    | 创建时间           |
 | account        | string | 玩家账号           |
-| account_type   | string | 账号类型0-正常 1-试玩  |
+| account_type   | int    | 账号类型0-正常 1-试玩  |
 | amount         | string | 转账金额           |
 | before_amount  | string | 转账前金额          |
 | after_amount   | string | 转账后金额          |
@@ -553,6 +559,12 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "overage"      : "-1.00"
 }
 ```
+
+### 游戏注单 V3
+
+接口地址：`/api/game/orders/v3`。
+
+该接口与 `/api/game/orders` 使用相同的请求字段（`agent_id`、`start_time`、`end_time`、`timestamp`、`sign`），返回值为 `data` 数组。请求时间范围由服务端按月份处理；跨月请求会返回时间范围错误。V3 当前实现仍使用 `TGameOrderItem` 字段结构，调用方应以实际返回字段为准。
 
 假设玩家下注1.00元, 中奖1元, 等于保本
 ```json
@@ -650,6 +662,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | account          | string | 玩家账号                   |
 | nickname         | string | 玩家昵称                   |
 | balance          | string | 玩家余额                   |
+| account          | string | 玩家账号                   |
 | frozen_amount    | string | 玩家冻结金额               |
 | is_online        | int    | 玩家是否在线               |
 | account_type     | int    | 玩家类型 0-正常 1-试玩      |
@@ -745,7 +758,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 |------------|--------|:--------:|--------------------|---------------|
 | agent_id   | int64  |    是    | 运营商ID           | 1             |
 | out_order  | string |    是    | 第三方订单号       | O38674837624  |
-| timestamp  | int64  |    是    | 发送请求的时间戳   | 1626863144    |
+| timestamp  | int64  |    是    | 发送请求的毫秒时间戳 | 1706941836000 |
 | sign       | string |    是    | 签名，详见签名规则 |               |
 
 
@@ -943,7 +956,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| type             | int      | 玩家类型 1-正常       |
+| account_type     | int      | 玩家类型 0-正常 1-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
@@ -1033,7 +1046,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| type             | int      | 玩家类型 1-正常       |
+| account_type     | int      | 玩家类型 0-正常 1-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
