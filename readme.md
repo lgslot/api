@@ -72,7 +72,7 @@ stringSignTemp = stringA + "&key=api_key" //注：api_key为后台设置的密�
 
 假设密钥是: B9697969749DA2FF0B0057F363641EDA
 ```go
-// GO 
+// GO
 api_key        := "B9697969749DA2FF0B0057F363641EDA"
 stringA        := "account=dg888888&agent_id=2&ip=127.0.0.1&nickname=harry&timestamp=1706941836000&type=1";
 stringSignTemp := stringA + "&key=" + api_key
@@ -113,7 +113,7 @@ try {
 } catch (NoSuchAlgorithmException e) {
     e.printStackTrace();
 }
-```        
+```
 ```php
 <?php
 $apiKey = "B9697969749DA2FF0B0057F363641EDA";
@@ -333,7 +333,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ### 响应参数
 | 参数名      | 类型   | 描述         |
 |-------------|:------:|--------------|
-| page        | int64  | 页数         |    
+| page        | int64  | 页数         |
 | page_size   | int64  | 每页条数     |
 | total       | int64  | 总条数       |
 | total_page  | int64  | 总页数       |
@@ -457,14 +457,14 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ### 响应参数
 | 参数名            | 类型     | 描述             |
 |----------------|:------:|----------------|
-| page           | int64  | 页数             |    
+| page           | int64  | 页数             |
 | page_size      | int64  | 每页条数           |
 | total          | int64  | 总条数            |
 | total_page     | int64  | 总页数            |
 | list           | array  | 列表数组           |
 
 #### 数据内容
-| 参数名         | 类型 | 描述 | 
+| 参数名         | 类型 | 描述 |
 | -------------| :--------:| -------------- |
 | order         | string | 订单号            |
 | out_order      | string | 三方订单号          |
@@ -560,11 +560,6 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 }
 ```
 
-### 游戏注单 V3
-
-接口地址：`/api/game/orders/v3`。
-
-该接口与 `/api/game/orders` 使用相同的请求字段（`agent_id`、`start_time`、`end_time`、`timestamp`、`sign`），返回值为 `data` 数组。请求时间范围由服务端按月份处理；跨月请求会返回时间范围错误。V3 当前实现仍使用 `TGameOrderItem` 字段结构，调用方应以实际返回字段为准。
 
 假设玩家下注1.00元, 中奖1元, 等于保本
 ```json
@@ -728,8 +723,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "error_code": 0,
     "error_msg":"ok",
     "data":{
-        "account"      : "aa3242",        
-        "balance"      : "100.22",        
+        "account"      : "aa3242",
+        "balance"      : "100.22",
     }
 }
 ```
@@ -817,7 +812,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ``` json
 {
     "account"  : "HQ_28_hello8",
-    "agent_id" : 1,    
+    "agent_id" : 1,
     "timestamp": 1706941836000,
     "type"     : 1,
     "sign"     : ""
@@ -837,7 +832,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 {
     "error_code": 0,
     "error_msg" : "ok",
-    "data"      : { 
+    "data"      : {
     }
 }
 ```
@@ -907,8 +902,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 }
 ```
 
- 
- 
+
+
 ## 转出
 ### 接口概述
 - 功能: 转出功能(下分)
@@ -917,7 +912,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 ```
 /api/trans/out 和/api/trans/inout的区别在与:
-如果账户有99.5, 请求转出100, 
+如果账户有99.5, 请求转出100,
 /api/trans/inout接口会转出99.5，余额变成0
 /api/trans/out接口会直接报错中止
 ```
@@ -1000,7 +995,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 ```
 
 
- 
+
 ## 转入
 ### 接口概述
 - 功能: 转入功能(上分)
@@ -1094,7 +1089,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 
 
- 
+
 ## 每日汇总
 ### 接口概述
 - 功能: 获取每日汇总(只能获取昨日之前)
@@ -1246,7 +1241,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 ## 语言
 ### 语言与描述
-| 语言名称 | 描述 | 
+| 语言名称 | 描述 |
 |--------------|---------------------|
 |zh-hans  | 简体中文|
 |vi       | 越南文|
@@ -1256,7 +1251,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 
 ## 币种
 ### 币种和币种ID描述
-| 币种ID | 币种名称 | 币种缩写 | 
+| 币种ID | 币种名称 | 币种缩写 |
 |--------------|:-----------|:----------:|
 |-1|    试玩币     | TC |
 |1 |   人民币     | CNY |
