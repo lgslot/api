@@ -179,7 +179,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | ip        | string |    否    | 玩家IP                               | 127.0.0.1     |
 | nickname  | string |    否    | 玩家昵称                             | 恭喜发财007    |
 | timestamp | int64  |    是    | 发送请求的毫秒时间戳                   | 1706941836000 |
-| type      | int    |    是    | 玩家类型 1-正常                      | 1             |
+| type      | int    |    是    | 玩家类型 0-自动判断，1-正常玩家       | 1             |
+| platform  | int    |    否    | 平台 1-Android 2-MacOS 3-iOS 4-Windows 5-MacOS 6-其他 | 1 |
 | sign      | string |    是    | 签名，详见签名规则                   |               |
 ``` json
 {
@@ -189,6 +190,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
     "nickname" : "恭喜发财007",
     "timestamp": 1706941836000,
     "type"     : 1,
+    "platform" : 1,
     "sign"     : ""
 }
 ```
@@ -263,12 +265,14 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| account_type     | int      | 玩家类型 0-正常 1-试玩 |
+| account_type     | int      | 玩家类型 1-正常 2-红利 3-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
 | type             | int      | 类型 1-转出 2-转入   |
 | currency_id      | int      | 币种                |
+| currency_name    | string   | 币种名称            |
+| currency_short   | string   | 币种缩写            |
 | remark           | string   | 备注                |
 
 
@@ -317,7 +321,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | agent_id    | int64  |    是    | 运营商ID           | 1               |
 | page        | int64  |    是    | 页数               | 1               |
 | page_size   | int64  |    是    | 每页条数           | 10              |
-| timestamp   | int64  |    是    | 发送请求的毫秒时间戳 | 170694
+| timestamp   | int64  |    是    | 发送请求的毫秒时间戳 | 1706941836000 |
+| sign        | string |    是    | 签名，详见签名规则   |               |
 
 
 ```json
@@ -403,7 +408,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | game_id     | int64     |    是    | 游戏ID               | 1                                |
 | lang        | string    |    是    | 语系                 | zh-hans                          |
 | timestamp   | int64     |    是    | 发送请求的毫秒时间戳 | 1706941836000                    |
-| token       | string    |    是    | 玩家token (玩家注入接口获取) | ddec96d2165e4f3e8a642057db116983 |
+| token       | string    |    是    | 玩家token（由玩家登录接口获取） | ddec96d2165e4f3e8a642057db116983 |
 | sign        | string    |    是    | 签名，详见签名规则   |                                  |
 
 
@@ -468,14 +473,16 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | -------------| :--------:| -------------- |
 | order         | string | 订单号            |
 | out_order      | string | 三方订单号          |
-| create_time    | int    | 创建时间           |
+| create_time    | int64  | 创建时间           |
 | account        | string | 玩家账号           |
-| account_type   | int    | 账号类型0-正常 1-试玩  |
+| account_type   | int    | 账号类型 1-正常 2-红利 3-试玩  |
 | amount         | string | 转账金额           |
 | before_amount  | string | 转账前金额          |
 | after_amount   | string | 转账后金额          |
 | type           | int    | 账变类型 1-转出 2-转入 |
 | currency_id    | int    | 币种ID           |
+| currency_name  | string | 币种名称         |
+| currency_short | string | 币种缩写         |
 | remark         | string | 备注             |
 
 
@@ -659,8 +666,8 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | balance          | string | 玩家余额                   |
 | account          | string | 玩家账号                   |
 | frozen_amount    | string | 玩家冻结金额               |
-| is_online        | int    | 玩家是否在线               |
-| account_type     | int    | 玩家类型 0-正常 1-试玩      |
+| is_online        | bool   | 玩家是否在线               |
+| account_type     | int    | 玩家类型 1-正常 2-红利 3-试玩      |
 | status           | int    | 状态 1-正常 2-冻结 3-封号  |
 
 
@@ -951,12 +958,14 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| account_type     | int      | 玩家类型 0-正常 1-试玩 |
+| account_type     | int      | 玩家类型 1-正常 2-红利 3-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
 | type             | int      | 类型 1-转出 2-转入   |
 | currency_id      | int      | 币种                |
+| currency_name    | string   | 币种名称            |
+| currency_short   | string   | 币种缩写            |
 | remark           | string   | 备注                |
 
 
@@ -1041,12 +1050,14 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | out_order        | string   | 三方订单号            |
 | create_time      | int64    | 创建时间             |
 | account          | string   | 玩家账号             |
-| account_type     | int      | 玩家类型 0-正常 1-试玩 |
+| account_type     | int      | 玩家类型 1-正常 2-红利 3-试玩 |
 | amount           | string   | 转账金额             |
 | before_amount    | string   | 转账前金额            |
 | after_amount     | string   | 转账后金额            |
 | type             | int      | 类型 1-转出 2-转入   |
 | currency_id      | int      | 币种                |
+| currency_name    | string   | 币种名称            |
+| currency_short   | string   | 币种缩写            |
 | remark           | string   | 备注                |
 
 
