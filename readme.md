@@ -455,7 +455,7 @@ echo $hashString; // 输出: 718566FD5CBA5FC27D2E645ACFE5B010
 | page_size    | int64  |    是    | 每页条数                 | 10                |
 | start_time   | int64  |    是    | 开始毫秒时间戳           | 1                 |
 | timestamp    | int64  |    是    | 发送请求的毫秒时间戳     | 1706941836000     |
-| type         | int64  |    是    | 玩家类型 0-正常玩家 1-试玩玩家 | 1                 |
+| type         | int64  |    是    | 玩家类型筛选：1-普通玩家，2-红利玩家，3-试玩玩家 | 1                 |
 | sign         | string |    是    | 签名，详见签名规则       |                   |
 
 
